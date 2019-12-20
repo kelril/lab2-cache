@@ -7,7 +7,6 @@ Cache::Cache() {
     _experiments = number_of_experiments();
 }
 
-
 std::map<int, int> Cache::number_of_experiments() {
     std::map<int, int> experiments;
     int n = 1;
@@ -38,7 +37,6 @@ void Cache::straight_pass() {
     }
 }
 
-
 void Cache::back_pass() {
     int number_of_experimets = _experiments.size();
     for (int i = 1; i <= number_of_experimets; ++i) {
@@ -54,7 +52,6 @@ void Cache::back_pass() {
                      static_cast<double> (end1 - start) / CLOCKS_PER_SEC);
     }
 }
-
 
 void Cache::random_pass() {
     int number_of_experimets = _experiments.size();
@@ -75,7 +72,6 @@ void Cache::random_pass() {
     }
 }
 
-
 void Cache::set_array(int i) {
     int size = _experiments[i] / sizeof(int);
     _array = new int[size];
@@ -84,14 +80,12 @@ void Cache::set_array(int i) {
     }
 }
 
-
 void Cache::set_straight(int size) {
     unsigned now = time(0);
     for (int i = 0; i < size; ++i) {
         _array[i] = rand_r(&now);
     }
 }
-
 
 void Cache::set_back(int size) {
     unsigned now = time(0);
@@ -106,7 +100,6 @@ void Cache::set_random(int size, std::vector <size_t> &myrand) {
         _array[myrand[i]] = rand_r(&now);
     }
 }
-
 
 void Cache::resultWindow(std::string const &travelVariant,
                          size_t const &numberOfExperiment, int const &size,
