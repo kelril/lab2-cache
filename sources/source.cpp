@@ -60,7 +60,7 @@ void Cache::random_pass() {
         int size = _experiments[i] / sizeof(int);
         std::vector <size_t> myrand(size);
         srand(time(NULL));  //для рандомного заполнения
-        random_shuffle(myrand.begin(), myrand.end());   //рандом от начала до конца (диапазон)
+        random_shuffle(myrand.begin(), myrand.end());   //диапазон
         clock_t start = clock();
         for (int j = 1; j != iterations; j++) {
             set_random(size, myrand);
