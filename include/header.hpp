@@ -1,4 +1,4 @@
-// Copyright 2018 Your Name <your_email>
+// Copyright 2018 Kelril <your_email>
 #ifndef INCLUDE_HEADER_HPP_
 #define INCLUDE_HEADER_HPP_
 
@@ -11,10 +11,10 @@
 #include <chrono>
 #include <string>
 
-#define l1 262144       //кэш процессора 1-го уровня в байтах
-#define  l3 6291456     //кэш процессора 3-го уровня в байтах
-#define iterations 1000 //цикл прогоняется 1000 раз
-#define translate 1024*1024 //перевод в Мбайты
+#define l1 262144               //кэш процессора 1-го уровня в байтах
+#define l3 6291456              //кэш процессора 3-го уровня в байтах
+#define iterations 1000         //количество итераций
+#define translate 1024*1024     //перевод в Мбайты
 typedef std::chrono::high_resolution_clock Clock;
 
 

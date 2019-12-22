@@ -1,4 +1,4 @@
-// Copyright 2018 Your Name <your_email>
+// Copyright 2018 Kelril <your_email>
 #include "header.hpp"
 #include <ctime>
 
@@ -24,10 +24,10 @@ std::map<int, int> Cache::number_of_experiments() { //количество эк�
 void Cache::straight_pass() {   //прямой проход
     int number_of_experimets = _experiments.size(); //кол-во эксперементов
     for (int i = 1; i <= number_of_experimets; ++i) {
-        set_array(i);   //создание и заполнение 0
+        set_array(i);
         int size = _experiments[i] / sizeof(int);
-        clock_t start = clock();    //засекаем время
-        for (int j = 1; j != iterations; j++) {
+        clock_t start = clock();
+        for (int j = 1; j < iterations; j++) {
             set_straight(size);
         }
         delete[] _array;
@@ -37,13 +37,13 @@ void Cache::straight_pass() {   //прямой проход
     }
 }
 
-void Cache::back_pass() {   //обратный проход
+void Cache::back_pass() {       //обратный проход
     int number_of_experimets = _experiments.size();
     for (int i = 1; i <= number_of_experimets; ++i) {
         set_array(i);
         int size = _experiments[i] / sizeof(int);
         clock_t start = clock();
-        for (int j = 1; j != iterations; j++) {
+        for (int j = 1; j < iterations; j++) {
             set_back(size);
         }
         delete[] _array;
@@ -53,16 +53,16 @@ void Cache::back_pass() {   //обратный проход
     }
 }
 
-void Cache::random_pass() {
+void Cache::random_pass() {     //случайный проход
     int number_of_experimets = _experiments.size();
     for (int i = 1; i <= number_of_experimets; ++i) {
         set_array(i);
         int size = _experiments[i] / sizeof(int);
         std::vector <size_t> myrand(size);
-        srand(time(NULL));  //для рандомного заполнения
-        random_shuffle(myrand.begin(), myrand.end());   //диапазон
+        srand(time(NULL));
+        random_shuffle(myrand.begin(), myrand.end());//изм порядка эл-тов
         clock_t start = clock();
-        for (int j = 1; j != iterations; j++) {
+        for (int j = 1; j < iterations; j++) {
             set_random(size, myrand);
         }
         delete[] _array;
@@ -74,13 +74,13 @@ void Cache::random_pass() {
 
 void Cache::set_array(int i) {  //создание массива и заполнение 0 (прогревание)
     int size = _experiments[i] / sizeof(int);
-    _array = new int[size]; //выделене памяти
+    _array = new int[size];
     for (int k = 0; k < size; ++k) {
         _array[k] = 0;
     }
 }
 
-void Cache::set_straight(int size) { //заполнение рандомными числами по прямой
+void Cache::set_straight(int size) {
     unsigned now = time(0);
     for (int i = 0; i < size; ++i) {
         _array[i] = rand_r(&now);
