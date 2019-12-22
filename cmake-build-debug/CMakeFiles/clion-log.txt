@@ -1,4 +1,4 @@
-"D:\CLion 2019.2.4\bin\cmake\win\bin\cmake.exe" -DCMAKE_BUILD_TYPE=Debug -G "CodeBlocks - MinGW Makefiles" C:\Users\ASUS\Desktop\cache
+/Applications/CLion.app/Contents/bin/cmake/mac/bin/cmake -DCMAKE_BUILD_TYPE=Debug -G "CodeBlocks - Unix Makefiles" /Users/kirill/Desktop/lab2-graph
 CMake Error at CMakeLists.txt:14 (include):
   include could not find load file:
 

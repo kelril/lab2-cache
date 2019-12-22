@@ -7,7 +7,7 @@ Cache::Cache() {
     _experiments = number_of_experiments();
 }
 
-std::map<int, int> Cache::number_of_experiments() {
+std::map<int, int> Cache::number_of_experiments() { //количество эксперементов
     std::map<int, int> experiments;
     int n = 1;
     experiments[n] = l1 / 2;
@@ -21,12 +21,12 @@ std::map<int, int> Cache::number_of_experiments() {
 }
 
 
-void Cache::straight_pass() {
-    int number_of_experimets = _experiments.size();
+void Cache::straight_pass() {   //прямой проход
+    int number_of_experimets = _experiments.size(); //кол-во эксперементов
     for (int i = 1; i <= number_of_experimets; ++i) {
-        set_array(i);
+        set_array(i);   //создание и заполнение 0
         int size = _experiments[i] / sizeof(int);
-        clock_t start = clock();
+        clock_t start = clock();    //засекаем время
         for (int j = 1; j != iterations; j++) {
             set_straight(size);
         }
@@ -37,7 +37,7 @@ void Cache::straight_pass() {
     }
 }
 
-void Cache::back_pass() {
+void Cache::back_pass() {   //обратный проход
     int number_of_experimets = _experiments.size();
     for (int i = 1; i <= number_of_experimets; ++i) {
         set_array(i);
@@ -59,8 +59,8 @@ void Cache::random_pass() {
         set_array(i);
         int size = _experiments[i] / sizeof(int);
         std::vector <size_t> myrand(size);
-        srand(time(NULL));
-        random_shuffle(myrand.begin(), myrand.end());
+        srand(time(NULL));  //для рандомного заполнения
+        random_shuffle(myrand.begin(), myrand.end());   //рандом от начала до конца (диапазон)
         clock_t start = clock();
         for (int j = 1; j != iterations; j++) {
             set_random(size, myrand);
@@ -72,15 +72,15 @@ void Cache::random_pass() {
     }
 }
 
-void Cache::set_array(int i) {
+void Cache::set_array(int i) {  //создание массива и заполнение 0 (прогревание)
     int size = _experiments[i] / sizeof(int);
-    _array = new int[size];
+    _array = new int[size]; //выделене памяти
     for (int k = 0; k < size; ++k) {
         _array[k] = 0;
     }
 }
 
-void Cache::set_straight(int size) {
+void Cache::set_straight(int size) {    //заполнение рандомными числами по прямой
     unsigned now = time(0);
     for (int i = 0; i < size; ++i) {
         _array[i] = rand_r(&now);

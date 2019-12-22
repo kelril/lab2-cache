@@ -11,10 +11,10 @@
 #include <chrono>
 #include <string>
 
-#define l1 393216
-#define  l3 4194304
-#define iterations 1000
-#define translate 1024*1024
+#define l1 262144       //кэш процессора 1-го уровня в байтах
+#define  l3 6291456     //кэш процессора 3-го уровня в байтах
+#define iterations 1000 //цикл прогоняется 1000 раз
+#define translate 1024*1024 //перевод в Мбайты
 typedef std::chrono::high_resolution_clock Clock;
 
 
