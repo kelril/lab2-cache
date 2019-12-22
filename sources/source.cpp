@@ -80,7 +80,7 @@ void Cache::set_array(int i) {  //создание массива и запол�
     }
 }
 
-void Cache::set_straight(int size) {    //заполнение рандомными числами по прямой
+void Cache::set_straight(int size) { //заполнение рандомными числами по прямой
     unsigned now = time(0);
     for (int i = 0; i < size; ++i) {
         _array[i] = rand_r(&now);
